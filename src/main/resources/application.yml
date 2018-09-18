@@ -1,0 +1,24 @@
+server:
+  port: 8080
+
+spring:
+#  profiles: dev
+
+  jmx:
+    default-domain: demo1
+
+  http:
+    encoding:
+      force: true
+      charset: UTF-8
+      enabled: true
+      
+  datasource:
+    name: test
+    url: jdbc:mysql://localhost:3306/demo
+    username: root
+    password: 123456
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  typeAliasesPackage: com.example.entity
