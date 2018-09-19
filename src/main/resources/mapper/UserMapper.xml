@@ -17,6 +17,10 @@
         	<id column="id" property="id"/>
         	<result column="role_name" property="roleName"/>
         	<result column="role_desc" property="roleDesc"/>
+        	<collection property="permissions" ofType="com.example.entity.Permission">
+                <id column="id" property="id"  jdbcType="INTEGER"/>
+                <result column="permission" property="permission" jdbcType="VARCHAR"/>
+            </collection>
         </collection>
     </resultMap>
     
@@ -32,11 +36,12 @@
     
     <select id="queryByName" resultMap="setResultMap" parameterType="java.lang.String">
     	select 
-    	u.*,rl.*
+    	u.*,rl.*,pn.*
     	from user u 
     	left join user_role ur on ur.user_id =u.id 
-    	left join role rl
-    	on ur.role_id=rl.id 
+    	left join role rl on ur.role_id=rl.id 
+    	left join role_permission rp on rl.id=rp.role_id
+        left join permission pn on rp.permission_id=pn.id
     	where u.user_name = #{name}
     </select>
     

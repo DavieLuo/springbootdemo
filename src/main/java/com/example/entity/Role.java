@@ -11,7 +11,7 @@ public class Role {
 	private Integer id;
 	private String roleName;
 	private String roleDesc;
-	private Set<User> users;
+	
 	private Set<Permission> permissions;
 	
 	public Integer getId() {
@@ -32,12 +32,7 @@ public class Role {
 	public void setRoleDesc(String roleDesc) {
 		this.roleDesc = roleDesc;
 	}
-	public Set<User> getUsers() {
-		return users;
-	}
-	public void setUsers(Set<User> users) {
-		this.users = users;
-	}
+	
 	public Set<Permission> getPermissions() {
 		return permissions;
 	}
@@ -46,8 +41,11 @@ public class Role {
 	}
 	@Override
 	public String toString() {
-		return "Role [id=" + id + ", roleName=" + roleName + ", roleDesc=" + roleDesc + ", users=" + users + "]";
+		return "Role [id=" + id + ", roleName=" + roleName + ", roleDesc=" + roleDesc + ", permissions=" + permissions
+				+ "]";
 	}
+	
+	
 	
 	
 	

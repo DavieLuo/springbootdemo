@@ -54,7 +54,7 @@ public class ShiroConfiguration {
 
         //对所有用户认证
         /*map.put("/user/**","authc");*/
-        map.put("/user/**","roles[admin]");
+        map.put("/user/**","perms[add]");
 
         //错误页面，认证不通过跳转
         shiroFilterFactoryBean.setUnauthorizedUrl("/403");

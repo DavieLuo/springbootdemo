@@ -21,6 +21,10 @@ public class Permission {
 	public void setPermission(String permission) {
 		this.permission = permission;
 	}
+	@Override
+	public String toString() {
+		return "Permission [id=" + id + ", permission=" + permission + "]";
+	}
 	
 	
 

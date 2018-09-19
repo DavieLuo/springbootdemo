@@ -8,6 +8,7 @@ import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
 import org.apache.shiro.authc.SimpleAuthenticationInfo;
+import org.apache.shiro.authc.credential.PasswordService;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
@@ -18,6 +19,8 @@ public class MyShiroRealm extends AuthorizingRealm {
 
     @Autowired
     private UserService service;
+    
+    
 
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {
@@ -29,9 +32,14 @@ public class MyShiroRealm extends AuthorizingRealm {
         SimpleAuthorizationInfo simpleAuthorizationInfo = new SimpleAuthorizationInfo();
         for(Role role:user.getRoles()){
             simpleAuthorizationInfo.addRole(role.getRoleName());
-            /*for(Permission permission:role.getPermissions()){
-                simpleAuthorizationInfo.addStringPermission(permission.getPermission());
-            }*/
+            if(role.getPermissions()!=null){
+                /* for(Permission permission:role.getPermissions()){
+                 simpleAuthorizationInfo.addStringPermission(permission.getPermission());
+                 }*/
+                 role.getPermissions().forEach(permission -> {
+                     simpleAuthorizationInfo.addStringPermission(permission.getPermission());
+                 });
+             }
         }
         return simpleAuthorizationInfo;
     }
