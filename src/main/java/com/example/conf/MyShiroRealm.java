@@ -19,7 +19,8 @@ public class MyShiroRealm extends AuthorizingRealm {
 
     @Autowired
     private UserService service;
-    
+
+
     
 
     @Override

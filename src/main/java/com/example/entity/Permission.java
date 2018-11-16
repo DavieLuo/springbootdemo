@@ -5,27 +5,40 @@ import org.springframework.stereotype.Component;
 @Component
 public class Permission {
 	
-	private Integer id;
+	private Integer permId;
 	private String permission;
-	
-	
-	public Integer getId() {
-		return id;
+	private String url;
+
+
+	public Integer getPermId() {
+		return permId;
 	}
-	public void setId(Integer id) {
-		this.id = id;
+
+	public void setPermId(Integer permId) {
+		this.permId = permId;
 	}
+
 	public String getPermission() {
 		return permission;
 	}
 	public void setPermission(String permission) {
 		this.permission = permission;
 	}
+
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
+	}
+
 	@Override
 	public String toString() {
-		return "Permission [id=" + id + ", permission=" + permission + "]";
+		return "Permission{" +
+				"permId=" + permId +
+				", permission='" + permission + '\'' +
+				", url='" + url + '\'' +
+				'}';
 	}
-	
-	
-
 }

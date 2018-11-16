@@ -13,13 +13,14 @@
         <result column="user_name" property="userName" jdbcType="VARCHAR" />
         <result column="user_pass" property="userPass" jdbcType="VARCHAR" />
         <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
-        <collection property="roles" ofType="com.example.entity.Role">
-        	<id column="id" property="id"/>
+        <collection property="roles" javaType="java.util.List"  ofType="com.example.entity.Role">
+        	<id column="role_id" property="roleId"/>
         	<result column="role_name" property="roleName"/>
         	<result column="role_desc" property="roleDesc"/>
-        	<collection property="permissions" ofType="com.example.entity.Permission">
-                <id column="id" property="id"  jdbcType="INTEGER"/>
+        	<collection property="permissions" javaType="java.util.List" ofType="com.example.entity.Permission">
+                <id column="perm_id" property="permId"  jdbcType="INTEGER"/>
                 <result column="permission" property="permission" jdbcType="VARCHAR"/>
+                <result column="url" property="url" jdbcType="VARCHAR"/>
             </collection>
         </collection>
     </resultMap>
@@ -39,9 +40,9 @@
     	u.*,rl.*,pn.*
     	from user u 
     	left join user_role ur on ur.user_id =u.id 
-    	left join role rl on ur.role_id=rl.id 
-    	left join role_permission rp on rl.id=rp.role_id
-        left join permission pn on rp.permission_id=pn.id
+    	left join role rl on ur.role_id=rl.role_id
+    	left join role_permission rp on rl.role_id=rp.role_id
+        left join permission pn on rp.permission_id=pn.perm_id
     	where u.user_name = #{name}
     </select>
     

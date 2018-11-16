@@ -2,6 +2,9 @@ package com.example;
 
 import static org.junit.Assert.assertEquals;
 
+import com.example.dao.RoleDao;
+import com.example.entity.Role;
+import com.example.service.RoleService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mybatis.spring.annotation.MapperScan;
@@ -24,11 +27,20 @@ public class SpringbootdemoApplicationTests {
 	
 	@Autowired
 	UserService service;
+
+	@Autowired
+	private RoleService roleService;
 	
 	@Test
 	public void getUserInfo() {
-		User user = service.getUserInfo("ad");
+		User user = service.getUserInfo("a");
 		System.out.println(user);
 	
+	}
+
+	@Test
+	public void getRoleInfo(){
+		Role role = roleService.queryRoleInfoById(1);
+		System.out.println(role);
 	}
 }

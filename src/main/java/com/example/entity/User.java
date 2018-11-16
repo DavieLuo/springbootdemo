@@ -1,7 +1,7 @@
 package com.example.entity;
 
 import java.sql.Timestamp;
-import java.util.Set;
+import java.util.List;
 
 import org.springframework.stereotype.Component;
 
@@ -14,7 +14,7 @@ public class User {
     private String userPass;
     private Timestamp createTime;
     
-    private Set<Role> roles;
+    private List<Role> roles;
     
     
     
@@ -27,7 +27,7 @@ public class User {
 	
 	
 	
-	public User(Integer id, String userName, String userPass, Timestamp createTime, Set<Role> roles) {
+	public User(Integer id, String userName, String userPass, Timestamp createTime, List<Role> roles) {
 		super();
 		this.id = id;
 		this.userName = userName;
@@ -63,10 +63,10 @@ public class User {
 	public void setCreateTime(Timestamp createTime) {
 		this.createTime = createTime;
 	}
-	public Set<Role> getRoles() {
+	public List<Role> getRoles() {
 		return roles;
 	}
-	public void setRoles(Set<Role> roles) {
+	public void setRoles(List<Role> roles) {
 		this.roles = roles;
 	}
 	@Override

@@ -8,18 +8,20 @@ import org.springframework.stereotype.Component;
 @Component
 public class Role {
 	
-	private Integer id;
+	private Integer roleId;
 	private String roleName;
 	private String roleDesc;
 	
-	private Set<Permission> permissions;
-	
-	public Integer getId() {
-		return id;
+	private List<Permission> permissions;
+
+	public Integer getRoleId() {
+		return roleId;
 	}
-	public void setId(Integer id) {
-		this.id = id;
+
+	public void setRoleId(Integer roleId) {
+		this.roleId = roleId;
 	}
+
 	public String getRoleName() {
 		return roleName;
 	}
@@ -33,23 +35,20 @@ public class Role {
 		this.roleDesc = roleDesc;
 	}
 	
-	public Set<Permission> getPermissions() {
+	public List<Permission> getPermissions() {
 		return permissions;
 	}
-	public void setPermissions(Set<Permission> permissions) {
+	public void setPermissions(List<Permission> permissions) {
 		this.permissions = permissions;
 	}
+
 	@Override
 	public String toString() {
-		return "Role [id=" + id + ", roleName=" + roleName + ", roleDesc=" + roleDesc + ", permissions=" + permissions
-				+ "]";
+		return "Role{" +
+				"roleId=" + roleId +
+				", roleName='" + roleName + '\'' +
+				", roleDesc='" + roleDesc + '\'' +
+				", permissions=" + permissions +
+				'}';
 	}
-	
-	
-	
-	
-	
-	
-	
-
 }

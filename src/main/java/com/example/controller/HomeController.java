@@ -3,6 +3,7 @@ package com.example.controller;
 
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
@@ -10,6 +11,8 @@ import org.apache.shiro.subject.Subject;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.io.PrintWriter;
 
 @Controller
 public class HomeController {
@@ -30,7 +33,8 @@ public class HomeController {
 	public String to403() {
 		return "403";
 	}
-	
+
+
 	
 	@RequestMapping("/loginUser")
 	public String loginUser(HttpServletRequest request) {
@@ -58,5 +62,7 @@ public class HomeController {
 		
 		
 	}
+
+
 
 }
